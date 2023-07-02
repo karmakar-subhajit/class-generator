@@ -97,6 +97,14 @@ button.gen-btn:hover{
     overflow-y: auto;
 }
 
+.overview {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 15px 24px;
+    color: #4a4a4a;
+}
+
 @media only screen and (max-width: 991px) {
     .form-grid {
         display: flex;
