@@ -17,40 +17,58 @@
 
 <body>
 
-    <section>
-        <div class="container">
-            <div class="page-title">
-                <h1>Generate CSS Classes</h1>
-            </div>
 
-            <div class="section-content">
-                <form class="form-grid">
-                    <input class="class-name" type="text" placeholder="CSS Class*" value="" required>
-                    <input class="class-number-start" type="number" value="" placeholder="Min Value*" value="" required>
-                    <input class="class-number-end" type="number" value="" placeholder="Max Value*" value="" required>
-                    <input class="class-number-gap" type="number" value="" placeholder="Increment (Default: 1)"
-                        value="">
-                    <input class="prop-name" type="text" placeholder="CSS Property*" value="" required>
-                    <input class="unit-name" type="text" placeholder="CSS Unit" value="">
-
-                    <input class="dec-ratio" type="number" value="" placeholder="Increase / Decrease" step="any" value="">
-                    <button class="gen-btn"><i class="fa-solid fa-gear left-icon"></i>Generate</button>
-                </form>
-
-                <div class="overview"></div>
-
-                <div class="css-wrap">
-                    <div class="btn-wrap">
-                        <button class="copy-btn"><i class="fa-regular fa-copy left-icon"></i>Copy (Minified)</button>
-                        <button class="reset-btn"><i class="fa-solid fa-rotate left-icon"></i>Reset</button>
-                    </div>
-                    <div class="output"></div>
+    <main>
+        <section class="main-section">
+            <div class="container">
+                <div class="page-title">
+                    <h1>Generate CSS Classes</h1>
                 </div>
 
-            </div>
-        </div>
-    </section>
+                <div class="section-content">
+                    <form class="form-grid">
+                        <input class="class-name" type="text" placeholder="CSS Class*" value="" required>
+                        <input class="class-number-start" type="number" value="" placeholder="Min Value*" value="" required>
+                        <input class="class-number-end" type="number" value="" placeholder="Max Value*" value="" required>
+                        <input class="class-number-gap" type="number" value="" placeholder="Increment (Default: 1)"
+                            value="">
+                        <input class="prop-name" type="text" placeholder="CSS Property*" value="" required>
+                        <input class="unit-name" type="text" placeholder="CSS Unit" value="">
 
+                        <input class="dec-ratio" type="number" value="" placeholder="Increase / Decrease" step="any" value="">
+                        <button class="gen-btn"><i class="fa-solid fa-gear left-icon"></i>Generate</button>
+                    </form>
+
+                    <div class="overview"></div>
+
+                    <div class="css-wrap">
+                        <div class="btn-wrap">
+                            <button class="copy-btn"><i class="fa-regular fa-copy left-icon"></i>Copy (Minified)</button>
+                            <button class="reset-btn"><i class="fa-solid fa-rotate left-icon"></i>Reset</button>
+                        </div>
+                        <div class="output"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <ul class="social-link">
+                    <li>
+                        <a href="https://www.linkedin.com/in/subhajit-karmakar-a0b88519b/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/karmakar-subhajit" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </li>
+                    <li>
+                        <h4> by Subhajit Karmakar</h4>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
