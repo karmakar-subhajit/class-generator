@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <section>
+        <div class="container">
+            <div class="page-title">
+                <h1 class="fs-48">Generate CSS Classes</h1>
+            </div>
+
+            <div class="section-content">
+                <form class="form-grid">
+                    <input class="class-name" type="text" placeholder="Enter Class Name*" value="" required>
+                    <input class="class-number-start" type="number" value="" placeholder="Start*" value="" required>
+                    <input class="class-number-gap" type="number" value="" placeholder="Gap (Default: 1)" value="">
+                    <input class="class-number-end" type="number" value="" placeholder="End*" value="" required>
+                    <input class="prop-name" type="text" placeholder="Enter CSS Property*" value="" required>
+                    <input class="unit-name" type="text" placeholder="Enter CSS Unit" value="">
+                
+                    <input class="dec-ratio" type="number" value="" placeholder="Increase / Decrease" step="any" value="">
+                    <button class="gen-btn"><i class="fa-solid fa-gear left-icon"></i>Generate</button>
+                </form>
+            
+                <div class="css-wrap">
+                    <div class="btn-wrap">
+                        <button class="copy-btn"><i class="fa-regular fa-copy left-icon"></i>Copy (Minifyied)</button>
+                        <button class="reset-btn"><i class="fa-solid fa-rotate left-icon"></i>Reset</button>
+                    </div>
+                    <div class="output"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        let class_name;
+        let class_num_start;
+        let class_num_gap;
+        let class_num_end;
+        let prop_name;
+        let unit_name;
+        let dec_ratio;
+        let root_size;
+        let main_value;
+
+        $(".unit-name").keyup(function(){
+            if($(this).val() == "rem" || $(this).val() == "em"){
+                $(".dec-ratio").val("").addClass("root-size").removeClass("dec-ratio");
+                $(".root-size").attr("placeholder", "Root Size");
+            }else{
+                $(".root-size").val("").removeClass("root-size").addClass("dec-ratio");
+                $(".dec-ratio").attr("placeholder", "Increase / Decrease");
+            }
+        })
+
+        $(".form-grid").submit(function(e){
+            e.preventDefault();
+            class_name = $(".class-name").val();
+            class_num_start = $(".class-number-start").val();
+            class_num_start = Number(class_num_start);
+
+            class_num_gap = $(".class-number-gap").val();
+            class_num_gap = Number(class_num_gap);
+
+            class_num_end = $(".class-number-end").val();
+            class_num_end = Number(class_num_end);
+
+            prop_name = $(".prop-name").val();
+            unit_name = $(".unit-name").val();
+
+            dec_ratio = $(".dec-ratio").val();
+            dec_ratio = Number(dec_ratio);
+
+            root_size = $(".root-size").val();
+            root_size = Number(root_size);
+
+            let i = class_num_start ? class_num_start : 1;
+            let output = '';
+
+            if(class_num_end){
+                for(i; (i <= class_num_end) ? i <= class_num_end : i < class_num_end; (class_num_gap) ? i+=class_num_gap : i++){
+
+                    i = Math.round((i + Number.EPSILON) * 100) / 100
+
+                    if(!dec_ratio && !root_size){
+                        main_value = i;
+                    }else if(!root_size){
+                        main_value = (i * dec_ratio);
+                        main_value = unit_name !== "vw" ? Math.ceil(main_value) : parseFloat(main_value.toFixed(1));
+                    }else if(!dec_ratio){
+                        main_value = i / root_size;
+                    }
+                    
+                    output += `.${class_name}${i} { ${prop_name}: ${main_value}${unit_name} }`;
+                    
+                }
+                $(".output").html(output);
+            }
+
+            $(".css-wrap").fadeIn();
+        })
+
+        $(".copy-btn").click(function(){
+            let copy_btn = $(this).html();
+            let copyData = $(".output").html();
+            copyData = copyData.replace(/\s/g, '');
+            let tempInput = $('<input>');
+            $('body').append(tempInput);
+            tempInput.val(copyData).select();
+            document.execCommand('copy');
+            $(this).addClass("copied").html(`<i class="fa-solid fa-check left-icon"></i>Copied`);
+            tempInput.remove();
+            setTimeout(function(){ $(".copy-btn").removeClass("copied").html(copy_btn); }, 1000);
+        });
+        $(".reset-btn").click(function(){
+            $(".form-grid").trigger("reset");
+            $(".output").html("");
+            $(".css-wrap").fadeOut();
+        });
+
+    </script>
+</body>
+</html>

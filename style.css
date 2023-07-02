@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* font-family: 'Poppins', sans-serif; */
+body{
+    background-color: #f2f2f2;
+    font-family: 'Poppins', sans-serif;
+}
+section{
+    padding: 90px 0;
+}
+
+.btn-wrap{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+button{
+    padding: 10px 24px;
+    border: none;
+    outline: none;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+}
+button:hover{
+    background-color: #333;
+}
+button.copy-btn.copied{
+    background-color: green;
+}
+button > .left-icon {
+    margin-right: 10px;
+}
+
+
+.page-title{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+}
+.form-grid > input {
+    width: 100%;
+    height: 50px;
+    padding: 0 24px;
+    border: 1px solid #dbdbdb;
+    outline: none;
+    border-radius: 0px;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    background-color: #fff;
+}
+button.gen-btn{
+    padding: 0 24px;
+    width: 100%;
+    height: 50px;
+    outline: none;
+    border: none;
+    background-color: #d38800;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+button.gen-btn:hover{
+    background-color: #b67500;
+}
+
+.css-wrap{
+    display: none;
+    margin-top: 40px;
+}
+
+.output{
+    padding: 24px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 991px) {
+    .form-grid {
+        display: flex;
+        flex-direction: column;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+    .btn-wrap {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+}
