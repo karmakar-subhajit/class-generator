@@ -118,11 +118,11 @@
             }
 
 
-            class_start_value = prop_name && unit_name && class_start ? `: ${main_value}` : "";
+            class_start_value = prop_name && class_start ? `: ${main_value}` : "";
             class_name = class_name ? `.${class_name}` : "";
             class_start = class_start ? `${class_start}{ ` : "";
             prop_name = prop_name ? `${prop_name}`: "";
-            unit_name = unit_name ? `${unit_name}; }`: "";
+            unit_name = prop_name || unit_name ? `${unit_name}; }`: "";
 
 
 
