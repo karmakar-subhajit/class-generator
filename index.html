@@ -28,14 +28,14 @@
                 <div class="section-content">
                     <form class="form-grid">
                         <input class="class-name" type="text" placeholder="CSS Class*" value="" required>
-                        <input class="class-number-start" type="number" value="" placeholder="Min Value*" value="" required>
-                        <input class="class-number-end" type="number" value="" placeholder="Max Value*" value="" required>
-                        <input class="class-number-gap" type="number" value="" placeholder="Increment (Default: 1)"
+                        <input class="class-number-start" type="number" value="" min="0" placeholder="Min Value*" value="" required>
+                        <input class="class-number-end" type="number" value="" min="0" placeholder="Max Value*" value="" required>
+                        <input class="class-number-gap" type="number" value="" min="0" placeholder="Increment (Default: 1)"
                             value="">
                         <input class="prop-name" type="text" placeholder="CSS Property*" value="" required>
                         <input class="unit-name" type="text" placeholder="CSS Unit" value="">
 
-                        <input class="dec-ratio" type="number" value="" placeholder="Increase / Decrease" step="any" value="">
+                        <input class="dec-ratio" type="number" value="" min="0" placeholder="Increase / Decrease" step="any" value="">
                         <button class="gen-btn"><i class="fa-solid fa-gear left-icon"></i>Generate</button>
                     </form>
 
